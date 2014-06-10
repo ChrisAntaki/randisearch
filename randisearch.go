@@ -15,9 +15,6 @@ func main() {
 	query := strings.Replace(chooseRandomLineFrom("queries.txt"), " ", "+", -1)
 	url := strings.Replace(engine+query, "\r", "", -1)
 
-	// Let's give a heads up.
-	fmt.Println("Visiting", url)
-
 	// Open the URL.
 	webbrowser.Open(url)
 }

@@ -1,3 +1,5 @@
 https://www.google.com/#q=
+https://duckduckgo.com/?q=
 https://search.yahoo.com/search?p=
+http://www.ask.com/web?q=
 http://www.bing.com/search?q=

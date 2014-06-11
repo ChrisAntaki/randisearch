@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/toqueteos/webbrowser"
 	"io/ioutil"
 	"math/rand"

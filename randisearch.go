@@ -51,7 +51,6 @@ func rollTheDice() {
 }
 
 func dealbreaker(err error) {
-	// Oh jeez!
 	if err != nil {
 		panic(err)
 	}

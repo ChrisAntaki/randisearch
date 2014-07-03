@@ -14,10 +14,11 @@ func main() {
 	searchSomethingSomewhere()
 
 	// Loop, if requested.
-	loop := flag.Bool("loop", false, "Continuously search")
+	loop := flag.Bool("loop", false, "Continuously search.")
+	duration := flag.Int("duration", 10, "Duration, in seconds, between continual searches.")
 	flag.Parse()
 	for *loop {
-		time.Sleep(10 * time.Second)
+		time.Sleep(time.Duration(*duration) * time.Second)
 		searchSomethingSomewhere()
 	}
 }

@@ -13,14 +13,26 @@ func main() {
 	// Search.
 	searchSomethingSomewhere()
 
-	// Loop, if requested.
-	loop := flag.Bool("loop", false, "Continuously search.")
-	duration := flag.Int("duration", 10, "Duration, in seconds, between continual searches.")
-	flag.Parse()
-	for *loop {
-		time.Sleep(time.Duration(*duration) * time.Second)
+	settings := getSettings()
+
+	for settings.loop {
+		time.Sleep(time.Duration(settings.delay) * time.Second)
 		searchSomethingSomewhere()
 	}
+}
+
+type Settings struct {
+	delay int
+	loop  bool
+}
+
+func getSettings() Settings {
+	delay := flag.Int("delay", 10, "Delay between searches, when looping.")
+	loop := flag.Bool("loop", false, "Continuously search.")
+
+	flag.Parse()
+
+	return Settings{*delay, *loop}
 }
 
 func searchSomethingSomewhere() {

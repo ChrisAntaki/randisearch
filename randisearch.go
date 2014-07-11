@@ -51,12 +51,15 @@ func chooseRandomLineFrom(filename string) string {
 	dealbreaker(err)
 
 	// Pick a random line.
-	lines := strings.Split(string(content), "\n")
-	rollTheDice()
-	index := rand.Intn(len(lines))
-	line := lines[index]
-
-	return line
+	for {
+		lines := strings.Split(string(content), "\n")
+		rollTheDice()
+		index := rand.Intn(len(lines))
+		line := lines[index]
+		if len(line) > 0 {
+			return line
+		}
+	}
 }
 
 func rollTheDice() {

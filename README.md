@@ -1,6 +1,6 @@
 ## Instructions
 
-```
+```shell
 # Make a search.
 go run randisearch.go
 

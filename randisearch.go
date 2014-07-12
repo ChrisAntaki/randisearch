@@ -16,18 +16,22 @@ func main() {
 	settings := getSettings()
 
 	for settings.loop {
-		time.Sleep(time.Duration(settings.delay) * time.Second)
+		seedRandomGenerator()
+		delay := settings.delay*rand.Float64()*1000 + 300
+		duration := time.Duration(delay) * time.Millisecond
+		time.Sleep(duration)
+
 		searchSomethingSomewhere()
 	}
 }
 
 type Settings struct {
-	delay int
+	delay float64
 	loop  bool
 }
 
 func getSettings() Settings {
-	delay := flag.Int("delay", 10, "Delay between searches, when looping.")
+	delay := flag.Float64("delay", 10, "Maximum delay between looping searches, in seconds.")
 	loop := flag.Bool("loop", false, "Continuously search.")
 
 	flag.Parse()
@@ -53,7 +57,7 @@ func chooseRandomLineFrom(filename string) string {
 	// Pick a random line.
 	for {
 		lines := strings.Split(string(content), "\n")
-		rollTheDice()
+		seedRandomGenerator()
 		index := rand.Intn(len(lines))
 		line := lines[index]
 		if len(line) > 0 {
@@ -62,7 +66,7 @@ func chooseRandomLineFrom(filename string) string {
 	}
 }
 
-func rollTheDice() {
+func seedRandomGenerator() {
 	rand.Seed(time.Now().Unix())
 }
 
